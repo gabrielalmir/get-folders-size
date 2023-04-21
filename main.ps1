@@ -113,8 +113,6 @@ function ExecuteGetFoldersSize {
             }
         }
     }
-
-
 }
 
 Measure-ScriptBlock {
