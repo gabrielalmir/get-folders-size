@@ -2,7 +2,7 @@
 
 Get Folders Size é um projeto de script PowerShell que tem como objetivo obter o tamanho total de pastas em diferentes servidores, sejam eles locais ou remotos. Ele utiliza as funções Measure-ScriptBlock e GetFoldersSize para medir o tempo de execução e percorrer as pastas e arquivos, respectivamente.
 
-O projeto foi criado pelo autor Gabriel Almir (usuário momentoalmir no GitHub) sob a licença MIT, o que significa que ele pode ser usado e modificado livremente desde que sejam respeitados os termos da licença.
+O projeto foi criado pelo autor [Gabriel Almir (momentoalmir)](http://github.com/momentoalmir) sob a licença MIT, o que significa que ele pode ser usado e modificado livremente desde que sejam respeitados os termos da licença.
 
 # Como baixar e executar o script
 
@@ -26,4 +26,4 @@ A função "Measure-ScriptBlock" é responsável por medir o tempo total de exec
 
 # Licença
 
-Este projeto é licenciado sob a licença MIT. Consulte o arquivo (LICENSE)[LICENSE] para obter mais informações.
+Este projeto é licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
