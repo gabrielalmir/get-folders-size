@@ -8,11 +8,11 @@ O projeto foi criado pelo autor Gabriel Almir (usuário momentoalmir no GitHub) 
 
 Para executar o script, basta seguir os seguintes passos:
 
-Baixe o arquivo "script.ps1" neste repositório.
+Baixe o arquivo "main.ps1" neste repositório.
 Abra o PowerShell em modo administrador.
-Navegue até o diretório onde o arquivo "script.ps1" foi baixado.
+Navegue até o diretório onde o arquivo "main.ps1" foi baixado.
 Execute o comando "Set-ExecutionPolicy RemoteSigned" para permitir a execução de scripts PowerShell.
-Execute o comando ".\script.ps1" para executar o script.
+Execute o comando ".\main.ps1" para executar o script.
 
 # Funcionamento do script
 
