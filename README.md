@@ -25,7 +25,12 @@ Edite o arquivo "main.ps1" e altere o valor de $locations para as localizações
     ]
 }
 ```
-Execute o comando "Set-ExecutionPolicy RemoteSigned" para permitir a execução de scripts PowerShell.
+Execute o comando a seguir para permitir a execução de scripts no PowerShell:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
 Execute o comando ".\main.ps1" para executar o script.
 
 # ▶️ Funcionamento do script
