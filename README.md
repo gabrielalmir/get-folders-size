@@ -11,6 +11,20 @@ Para executar o script, basta seguir os seguintes passos:
 Baixe o arquivo "main.ps1" neste repositório.
 Abra o PowerShell em modo administrador.
 Navegue até o diretório onde o arquivo "main.ps1" foi baixado.
+Edite o arquivo "main.ps1" e altere o valor de $locations para as localizações dos servidores remotos e as pastas a serem verificadas ou crie um arquivo "locations.json" com o seguinte formato:
+
+```json
+{
+    "localhost": [
+        "C:\\Windows\\System32",
+        "C:\\Users"
+    ],
+    "server1": [
+        "C:\\Windows\\System32",
+        "C:\\Users"
+    ]
+}
+```
 Execute o comando "Set-ExecutionPolicy RemoteSigned" para permitir a execução de scripts PowerShell.
 Execute o comando ".\main.ps1" para executar o script.
 

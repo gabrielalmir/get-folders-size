@@ -17,6 +17,27 @@ function Measure-ScriptBlock {
     Write-Host "=============================" -ForegroundColor Yellow
 }
 
+function ParseJsonFile {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$FilePath
+    )
+
+    # Ler arquivo JSON e converter para objeto Hashable
+    $json = (Get-Content $FilePath -Raw | ConvertFrom-Json)
+
+    # Criar objeto Hashable
+    $hash = @{}
+
+    # Loop através das propriedades do objeto JSON
+    foreach ($item in $json.PSObject.Properties) {
+        $hash[$item.Name] = $item.Value
+    }
+
+    # Retornar objeto Hashable
+    return $hash
+}
+
 function GetFoldersSize {
     [CmdletBinding()]
     param (
@@ -49,6 +70,11 @@ function GetFoldersSize {
 }
 
 function ExecuteGetFoldersSize {
+    param(
+        # hashable locations
+        [Parameter(Mandatory = $true)]
+        [hashtable]$locations
+    )
     # Localizações específicas dos servidores remotos
     # Hashables sempre recuperam informações em ordem alfabética
     # EX:
@@ -58,12 +84,6 @@ function ExecuteGetFoldersSize {
     # "server2" = @(
     #     "E:\Fileserver"
     # );
-    $locations = @{
-        "localhost" = @(
-            "C:\Users"
-            "C:\Program Files"
-        )
-    }
 
     # Obter credentiais do usuário do servidor
     $Credentials = Get-Credential -Message "Insira as credenciais do usuario do servidor remoto"
@@ -116,5 +136,12 @@ function ExecuteGetFoldersSize {
 }
 
 Measure-ScriptBlock {
-    ExecuteGetFoldersSize
+    $locations = (ParseJsonFile -FilePath "./locations.json")
+    # or
+    # $locations = @{
+    #     "server1" = @(
+    #         "F:\FileServer"
+    #     );
+    # }
+    ExecuteGetFoldersSize -locations $locations
 }
