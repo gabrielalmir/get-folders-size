@@ -31,7 +31,11 @@ Execute o comando a seguir para permitir a execução de scripts no PowerShell:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-Execute o comando ".\main.ps1" para executar o script.
+Execute o comando a seguir para executar o script:
+
+```powershell
+. .\main.ps1
+```
 
 # ▶️ Funcionamento do script
 
