@@ -8,10 +8,10 @@ function Measure-ScriptBlock {
     & $ScriptBlock
     $EndTime = Get-Date
 
-    # Calculate elapsed time
+    # Calcular o  tempo total de execução do script
     $ELAPSED_TIME = (New-TimeSpan -Start $StartTime -End $EndTime).ToString()
 
-    # Display the formatted time
+    # Mostre o tempo total de execução do script
     Write-Host "=============================" -ForegroundColor Yellow
     Write-Host "Tempo Total: $ELAPSED_TIME" -ForegroundColor Yellow
     Write-Host "=============================" -ForegroundColor Yellow
