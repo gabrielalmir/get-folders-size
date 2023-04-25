@@ -4,6 +4,7 @@ function Measure-ScriptBlock {
         [ScriptBlock]$ScriptBlock
     )
 
+    # Iniciar o tempo de execução do script
     $StartTime = Get-Date
     & $ScriptBlock
     $EndTime = Get-Date
@@ -85,13 +86,23 @@ function ExecuteGetFoldersSize {
     #     "E:\Fileserver"
     # );
 
-    # Obter credentiais do usuário do servidor
-    $Credentials = Get-Credential -Message "Insira as credenciais do usuario do servidor remoto"
-
-    if ($null -eq $Credentials) {
-        Write-Host "Credenciais nao informadas." -ForegroundColor Red
+    # Se nenhuma localização for informada, não execute o script
+    if ($null -eq $locations) {
+        Write-Host "Nenhuma localizacao informada." -ForegroundColor Red
         return
     }
+
+    # Se houver apenas uma localização e for localhost, não solicite credenciais
+    if (!($locations.Count -eq 1 -and $locations.Keys[0] -eq "localhost")) {
+        # Obter credentiais do usuário do servidor
+        $Credentials = Get-Credential -Message "Insira as credenciais do usuario do servidor remoto"
+
+        if ($null -eq $Credentials) {
+            Write-Host "Credenciais nao informadas." -ForegroundColor Red
+            return
+        }
+    }
+
 
     # Loop através dos servidores remotos
     foreach ($location in $locations.Keys) {
@@ -122,7 +133,11 @@ function ExecuteGetFoldersSize {
                 Test-WSMan $ComputerName
 
                 $session = New-PSSession -ComputerName $ComputerName -Credential $Credentials
-                $session.ToString()
+
+                if ($null -eq $session) {
+                    Write-Host "Nao foi possivel conectar ao servidor $($ComputerName)." -ForegroundColor Red
+                    continue
+                }
 
                 # Executar script em servidor remoto
                 Invoke-Command -ComputerName $ComputerName -ScriptBlock ${Function:GetFoldersSize} -ArgumentList $folderPath -Credential $Credentials
@@ -136,6 +151,7 @@ function ExecuteGetFoldersSize {
 }
 
 Measure-ScriptBlock {
+    # Ler arquivo JSON e converter para objeto Hashable
     $locations = (ParseJsonFile -FilePath "./locations.json")
     # or
     # $locations = @{
