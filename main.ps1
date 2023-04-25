@@ -1,3 +1,5 @@
+# Autor: Gabriel Almir (@momentoalmir)
+# Importar as funções necessárias
 . ./functions/MeasureScriptBlock.ps1
 . ./functions/ParseFile.ps1
 . ./functions/GetFoldersSize.ps1
