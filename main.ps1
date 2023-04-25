@@ -106,14 +106,15 @@ function ExecuteGetFoldersSize {
 
     # Loop através dos servidores remotos
     foreach ($location in $locations.Keys) {
-
+        # Nome do servidor remoto e mostra na tela o nome do servidor
+        # útil para identificar o servidor remoto em caso de falha
         $ComputerName = $location
 
         Write-Host "==========================" -ForegroundColor Yellow
         Write-Host "Servidor: $($ComputerName)" -ForegroundColor Yellow
         Write-Host "==========================" -ForegroundColor Yellow
 
-
+        # Loop através das pastas a serem verificadas no servidor remoto
         foreach ($folderPath in $locations[$ComputerName]) {
             Write-Host "==========================" -ForegroundColor Green
             Write-Host "Pasta: $($folderPath)" -ForegroundColor Green
@@ -127,13 +128,17 @@ function ExecuteGetFoldersSize {
 
             # Se for remoto, testar conexão
             if ($remote) {
+                # Testa conexão com o servidor remoto
                 Test-Connection -ComputerName $ComputerName -Count 1 |
                 Format-List -Property PSComputerName, Address, IPV4Address, IPV6Address
 
+                # Testar se o servidor remoto está disponível
                 Test-WSMan $ComputerName
 
+                # Conectar ao servidor remoto
                 $session = New-PSSession -ComputerName $ComputerName -Credential $Credentials
 
+                # Testar se a conexão foi bem sucedida
                 if ($null -eq $session) {
                     Write-Host "Nao foi possivel conectar ao servidor $($ComputerName)." -ForegroundColor Red
                     continue
