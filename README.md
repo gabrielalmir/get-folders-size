@@ -22,8 +22,8 @@ Para executar o projeto, basta seguir os seguintes passos:
    ```json
    {
        "localhost": [
-           "C:\Windows\System32",
-           "C:\Users"
+           "C:\\Windows\\System32",
+           "C:\\Users"
        ]
    }
    ```
