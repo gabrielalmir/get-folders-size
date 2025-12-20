@@ -1,45 +1,66 @@
-
 # 👽 Get Folders Size
 
-Get Folders Size é um projeto em Rust que tem como objetivo obter o tamanho total de pastas em diferentes servidores locais. Ele utiliza as funções `get_folders_size` e `parse_json_file` para medir o tempo de execução e percorrer as pastas e arquivos, respectivamente.
+A modern, fast, and beautiful desktop application to calculate the size of folders on your computer. Built with Tauri, React, TypeScript, and Tailwind CSS. Rewritten version of the original PowerShell script.
 
-O projeto foi criado pelo autor [Gabriel Almir (gabrielalmir)](http://github.com/gabrielalmir) sob a licença MIT, o que significa que ele pode ser usado e modificado livremente desde que sejam respeitados os termos da licença.
+## Features
 
-## 🛠️ Como baixar e executar o projeto
+- 🚀 **Blazing Fast**: Uses Rust for efficient file system traversal.
+- 💅 **Simple UI**: Clean and beautiful interface built with React and Tailwind CSS.
+- 📊 **Detailed Stats**: View folder size in both GB and exact bytes.
+- 🛡️ **Safe**: Runs locally on your machine with no data collection.
+- ⚡ **Responsive**: Non-blocking folder analysis keeps the UI smooth.
 
-Para executar o projeto, basta seguir os seguintes passos:
+## Tech Stack
 
-1. Certifique-se de ter o Rust instalado. Caso não tenha, siga as instruções em [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install).
-2. Clone este repositório:
-   ```sh
-   git clone https://github.com/momentoalmir/get-folders-size.git
-   ```
-3. Navegue até o diretório do projeto:
-   ```sh
-   cd get-folders-size
-   ```
-4. Crie um arquivo `locations.json` com o seguinte formato:
-   ```json
-   {
-       "localhost": [
-           "C:\\Windows\\System32",
-           "C:\\Users"
-       ]
-   }
-   ```
-5. Compile e execute o projeto:
-   ```sh
-   cargo run
-   ```
+- **Core**: [Tauri](https://tauri.app/) (Rust)
+- **Frontend**: [React](https://react.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Bundler**: [Vite](https://vitejs.dev/)
 
-## ▶️ Funcionamento do projeto
+## Prerequisites
 
-O projeto consiste em obter o tamanho total de arquivos em pastas de servidores locais. Para isso, ele utiliza as funções `get_folders_size` e `parse_json_file`.
+Before running the application, ensure you have the following installed:
 
-A função `get_folders_size` é responsável por obter o tamanho total de arquivos em uma determinada pasta. Ela recebe como parâmetro o caminho da pasta a ser verificada e utiliza a biblioteca `walkdir` para obter a lista de arquivos e subpastas da pasta. Em seguida, ela calcula o tamanho total dos arquivos da pasta e retorna o resultado.
+- **Node.js** (v22 or newer)
+- **Rust** (latest stable)
+- **System Dependencies** (Linux only):
+  ```bash
+  sudo apt-get update
+  sudo apt-get install -y pkg-config libglib2.0-dev libgtk-3-dev libsoup-3.0-dev libwebkit2gtk-4.1-dev
+  ```
 
-A função `parse_json_file` é responsável por ler o arquivo JSON contendo as localizações das pastas a serem verificadas. Ela recebe como parâmetro o caminho do arquivo JSON, lê seu conteúdo e o converte em um objeto `Locations`.
+## Getting Started
 
-## 📘 Licença
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yourusername/get-folders-size.git
+    cd get-folders-size
+    ```
 
-Este projeto é licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Run in development mode**
+    ```bash
+    npm run tauri dev
+    ```
+
+4.  **Build for production**
+    ```bash
+    npm run tauri build
+    ```
+    The executable will be located in `src-tauri/target/release/bundle`.
+
+## Usage
+
+1.  Launch the application.
+2.  Enter the absolute path of the folder you want to analyze (e.g., `/home/user/Documents`).
+3.  Click **Analyze**.
+4.  View the size calculation results instantly.
+
+## License
+
+This project is licensed under the MIT License.
