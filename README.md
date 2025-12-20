@@ -1,6 +1,6 @@
 # 👽 Get Folders Size
 
-A modern, fast, and beautiful desktop application to calculate the size of folders on your computer. Built with Tauri, React, TypeScript, and Tailwind CSS. Rewritten version of the original PowerShell script.
+A simple, fast, and beautiful desktop application to calculate the size of folders on your computer. Built with Tauri, React, TypeScript, and Tailwind CSS. Rewritten version of the original PowerShell script.
 
 ## Features
 
